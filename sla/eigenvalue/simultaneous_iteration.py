@@ -11,12 +11,13 @@ def simultaneous_iteration(a, max_iterations=100, verbose=False):
     for i in range(max_iterations):
         y = a @ eigen_vectors
         eigen_vectors, r = qr_decompose_modified_gram_schmidt(y)
-        eigen_values = np.diag((eigen_vectors.T @ a) @ eigen_vectors)
         if verbose:
+            eigen_values = np.diag((eigen_vectors.T @ a) @ eigen_vectors)
             print("iteration", i)
             print("eigen_values", eigen_values)
             print("eigen_vectors", eigen_vectors)
             print()
+    eigen_values = np.diag((eigen_vectors.T @ a) @ eigen_vectors)
     return eigen_values, eigen_vectors
 
 
