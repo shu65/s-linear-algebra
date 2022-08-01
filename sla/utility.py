@@ -9,9 +9,12 @@ def is_lower_triangular_matrix(a):
     return np.array_equal(a, np.tril(a))
 
 
-def is_orthogonal_matrix(a):
-    print("is_orthogonal_matrix", a.T @ a)
-    return np.allclose(a.T @ a, np.identity(a.shape[1]))
+def is_orthogonal_matrix(a, b=None):
+    if b is None:
+        print("is_orthogonal_matrix", a.T @ a, flush=True)
+        return np.allclose(a.T @ a, np.identity(a.shape[1]))
+    else:
+        return np.allclose(a.T @ b @ a, np.identity(a.shape[1]))
 
 
 def is_symmetric(a):
